@@ -1,0 +1,39 @@
+name: Build iOS dylib
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Show Xcode and SDK
+        run: |
+          xcodebuild -version
+          xcrun --sdk iphoneos --show-sdk-path
+
+      - name: Build sheepct.dylib (arm64)
+        run: |
+          xcrun --sdk iphoneos clang++ \
+            -arch arm64 \
+            -miphoneos-version-min=14.0 \
+            -std=c++17 \
+            -O2 \
+            -fPIC \
+            -dynamiclib \
+            -isysroot "$(xcrun --sdk iphoneos --show-sdk-path)" \
+            mod.cpp \
+            -o sheepct.dylib
+          file sheepct.dylib
+          lipo -info sheepct.dylib
+          otool -L sheepct.dylib
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: sheepct-dylib
+          path: sheepct.dylib
