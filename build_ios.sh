@@ -25,8 +25,13 @@ xcrun --sdk iphoneos clang++ \
   -O2 \
   -fPIC \
   -dynamiclib \
+  -fobjc-arc \
   -isysroot "$SDK_PATH" \
-  mod.cpp \
+  mod.cpp SheepctMenu.mm \
+  -framework UIKit \
+  -framework Foundation \
+  -framework QuartzCore \
+  -framework CoreGraphics \
   -o sheepct.dylib
 
 echo "Build xong: sheepct.dylib"

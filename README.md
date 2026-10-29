@@ -2,10 +2,32 @@
 
 ## Co gi trong nay
 
-- `mod.cpp`: code goc anh gui, giu nguyen 100%, khong sua logic.
+- `mod.cpp`: code goc anh gui, giu nguyen logic goc (chi in log, cho trong
+  o cho can thiep game), chi doi cac co sang `std::atomic<bool>` de menu
+  va luong nen cung doc/ghi an toan, va goi hien menu khi khoi tao.
+- `SheepctFeatures.h`: danh sach tinh nang dung chung giua `mod.cpp` va menu.
+- `SheepctMenu.mm`: menu UIKit chi tiet (xem muc Menu ben duoi).
 - `build_ios.sh`: script build `.dylib` arm64 cho iOS, chay tren macOS co Xcode.
 - `.github/workflows/build-ios.yml`: workflow GitHub Actions, build tren
   may Mac ao cua GitHub, khong can Mac that.
+
+## Menu
+
+Sau khi nap `.dylib` vao game:
+
+- Mot nut tron chu "S" hien noi tren man hinh. Keo nut de doi vi tri,
+  cham nhe vao nut de mo / dong bang menu. Cham ra ngoai bang menu thi
+  game ben duoi van nhan cham nhu binh thuong.
+- Bang menu co tieu de `sheepct`, dong trang thai "Dang bat: X/14",
+  nut dong "X", va danh sach cuon duoc gom 14 hang, moi hang la mot
+  tinh nang kem mo ta ngan va mot cong tac `UISwitch`.
+- Chan bang co 2 nut "Bat tat ca" va "Tat tat ca", kem ghi chu gioi han.
+- Hang cuoi cung gom chung "Tang 19 Cap" va "Mo khoa the thang" vi
+  ca hai deu nam trong nhom cap/the trong code goc.
+
+GIOI HAN: cong tac chi doi co trong `ModEnvironment`. Phan ap dung that
+(offset, hook, ghi bo nho game) KHONG co trong ban nay, nen bat cong tac
+cung chua lam tien/vang trong game thay doi. Menu chi la giao dien + co.
 
 ## Tai sao khong co san file .dylib chay duoc tren iPhone?
 
