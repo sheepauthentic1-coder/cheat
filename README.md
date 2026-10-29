@@ -25,9 +25,33 @@ Sau khi nap `.dylib` vao game:
 - Hang cuoi cung gom chung "Tang 19 Cap" va "Mo khoa the thang" vi
   ca hai deu nam trong nhom cap/the trong code goc.
 
-GIOI HAN: cong tac chi doi co trong `ModEnvironment`. Phan ap dung that
-(offset, hook, ghi bo nho game) KHONG co trong ban nay, nen bat cong tac
-cung chua lam tien/vang trong game thay doi. Menu chi la giao dien + co.
+## So luong muon add (ban 2)
+
+Phan tren cung cua bang menu la "SO LUONG MUON ADD", ap dung chung cho
+cac muc Add (tien, vang, co 4 la, ve, xu, diem):
+
+- Thanh keo (slider): keo tu 1 den 100.000, lam tron theo buoc 10.
+- Nut - / + (stepper): moi lan nhan doi 100, toi da 1.000.000.
+- O nhap so: go so chinh xac toi da 999.999.999, ban phim so.
+- Nut mau: 100, 1K, 10K, 100K, 1M.
+
+Mac dinh la 1.000. Gia tri chi luu trong mod (`SheepctAddAmount()`).
+
+## Menu muot / khong chan game (ban 2)
+
+- Mo/dong bang co animation spring, nut S co hieu ung nhan nho khi cham,
+  keo xong nut tu dinh vao mep gan nhat.
+- Cua so menu khong tro thanh key window, cham o ngoai bang menu xuyen
+  xuong game, nen popup cua game (vi du man hinh xac thuc) van nhan
+  cham / ban phim binh thuong. Neu popup bi nut S che, keo nut S ra
+  cho khac, hoac bam X de dong bang menu.
+- Man hinh xac thuc cua game van phai lam xong trong game, menu khong
+  tu dien thong tin do thay anh.
+
+GIOI HAN: cong tac va so luong chi doi co / gia tri trong `ModEnvironment`.
+Phan ap dung that (offset, hook, ghi bo nho game) KHONG co trong ban nay,
+nen bat cong tac cung chua lam tien/vang trong game thay doi. Menu chi la
+giao dien + co + so luong.
 
 ## Tai sao khong co san file .dylib chay duoc tren iPhone?
 

@@ -31,6 +31,21 @@ struct ModEnvironment {
 
 ModEnvironment env;
 
+// So luong muon cong them, mac dinh 1.000. Menu thay doi qua thanh keo / o nhap.
+// Chi luu gia tri, chua co lenh ghi bo nho game that.
+static std::atomic<long long> g_addAmount{1000};
+
+long long SheepctAddAmount() {
+    return g_addAmount.load();
+}
+
+void SheepctSetAddAmount(long long amount) {
+    if (amount < 1) amount = 1;
+    if (amount > 999999999LL) amount = 999999999LL;
+    g_addAmount.store(amount);
+    std::cout << "[sheepct] So luong muon add -> " << amount << "\n";
+}
+
 // Bang tinh nang dung cho menu: tieu de + mo ta + con tro toi co tuong ung.
 // Thu tu phai khop voi danh sach hien tren menu trong SheepctMenu.mm.
 struct FeatureEntry {
@@ -110,6 +125,7 @@ void KillKeyCheckAndAntiCheat() {
 // --- 2. BƠM TÀI NGUYÊN VÀ TIẾN TRÌNH KHỞI TẠO (CHẠY 1 LẦN) ---
 void ApplyOneTimeModPatches() {
     std::cout << "[sheepct] Đang áp dụng các gói mod tài nguyên và tiến trình nhân vật...\n";
+    std::cout << "[sheepct] So luong muon add hien tai: " << SheepctAddAmount() << "\n";
 
     if (env.add_money.load()) { /* Gọi hàm/offset cộng Cash */ }
     if (env.add_gold.load()) { /* Gọi hàm/offset cộng Coins */ }
