@@ -25,8 +25,13 @@ jobs:
             -O2 \
             -fPIC \
             -dynamiclib \
+            -fobjc-arc \
             -isysroot "$(xcrun --sdk iphoneos --show-sdk-path)" \
-            mod.cpp \
+            mod.cpp SheepctMenu.mm \
+            -framework UIKit \
+            -framework Foundation \
+            -framework QuartzCore \
+            -framework CoreGraphics \
             -o sheepct.dylib
           file sheepct.dylib
           lipo -info sheepct.dylib
